@@ -8,6 +8,7 @@ require("dotenv").config();
 
 const indexRouter = require("./routes/index");
 const boardsRouter = require("./routes/boards");
+const columnsRouter = require("./routes/columns");
 
 // connect to database
 main().catch((err) => console.log(err ? err : "connected to database"));
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api", indexRouter);
 app.use("/api/boards", boardsRouter);
+app.use("/api/columns", columnsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
