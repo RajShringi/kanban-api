@@ -8,9 +8,9 @@ router.get("/", function (req, res, next) {
 });
 
 // user register route
-router.post("/singup", async (req, res, next) => {
+router.post("/signup", async (req, res, next) => {
   try {
-    const user = await User.create(req.body);
+    const user = await User.create(req.body.user);
     const token = await user.generateToken();
     res.status(200).json(user.userInfo(token));
   } catch (error) {
@@ -20,7 +20,7 @@ router.post("/singup", async (req, res, next) => {
 
 // User Login route
 router.post("/login", async (req, res, next) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body.user;
   if (!email || !password) {
     return res.status(400).json({ errMsg: "email/passwrod required" });
   }
