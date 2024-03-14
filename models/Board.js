@@ -5,6 +5,7 @@ const boardSchema = new Schema(
   {
     name: { type: String, required: true, unique: true },
     columns: [{ type: Schema.Types.ObjectId, ref: "Column" }],
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
   },
   { timestamps: true }
 );
