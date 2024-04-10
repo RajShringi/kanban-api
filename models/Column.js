@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const columnSchema = new Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true, unique: true },
     tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
     board: { type: Schema.Types.ObjectId, ref: "Board", required: true },
   },
