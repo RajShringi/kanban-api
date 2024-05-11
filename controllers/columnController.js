@@ -11,7 +11,7 @@ async function getColumnInfo(req, res, next) {
         populate: {
           path: "subTasks",
           model: SubTask,
-          select: "-createdAt -updatedAt -__v",
+          select: "-createdAt -updatedAt -__v -task",
         },
       })
       .select("-createdAt -updatedAt -__v -board");
@@ -19,7 +19,7 @@ async function getColumnInfo(req, res, next) {
     if (!column) {
       res.status(400).json({ error: `No column found with this ${columnId}` });
     }
-    res.status(200).json({ column });
+    res.status(200).json(column);
   } catch (error) {
     next(error);
   }
