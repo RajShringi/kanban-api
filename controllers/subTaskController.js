@@ -1,6 +1,6 @@
 const SubTask = require("../models/SubTasks");
 
-async function updateIsDone() {
+async function updateIsDone(req, res, next) {
   const { subTaskId } = req.params;
   try {
     const subTask = await SubTask.findByIdAndUpdate(
