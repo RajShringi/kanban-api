@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const taskSchema = new Schema(
   {
-    name: { type: String, required: true, unique: true },
+    name: { type: String, required: true },
     description: { type: String },
-    subTasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
+    subTasks: [{ type: Schema.Types.ObjectId, ref: "Subtask" }],
     column: { type: Schema.Types.ObjectId, ref: "Column", required: true },
   },
   { timestamps: true }
