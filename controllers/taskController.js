@@ -140,12 +140,6 @@ async function updateTask(req, res, next) {
 }
 
 async function changeTaskColumn(req, res, next) {
-  // I need to find Id of task to know that task belong to which column
-  // remove that taskId from that column
-  // I also need Id of column to which I want to move that task to
-  // put that task at the end of the column
-  // update column id in task also
-  console.log("coming");
   const { currentColumn, moveColumn, taskId } = req.body.task;
   try {
     await Column.findByIdAndUpdate(
