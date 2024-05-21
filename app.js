@@ -6,7 +6,6 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 var cors = require("cors");
 require("dotenv").config();
-
 const indexRouter = require("./routes/index");
 const boardsRouter = require("./routes/boards");
 const columnsRouter = require("./routes/columns");
@@ -16,7 +15,7 @@ const subTasksRouter = require("./routes/subTasks");
 // connect to database
 main().catch((err) => console.log(err ? err : "connected to database"));
 async function main() {
-  await mongoose.connect("mongodb://localhost:27017/kanban");
+  await mongoose.connect(process.env.DATABASE_URL);
 }
 
 const app = express();
