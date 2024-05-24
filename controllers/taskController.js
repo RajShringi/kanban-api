@@ -170,14 +170,6 @@ async function moveTask(req, res, next) {
   try {
     const { taskId, sourceColumnId, destinationColumnId, destinationIndex } =
       req.body;
-    const col = await Column.findOne({
-      _id: destinationColumnId,
-      tasks: taskId,
-    });
-
-    if (col) {
-      return { msg: "Task already present in column" };
-    }
 
     const task = await Task.findByIdAndUpdate(taskId, {
       $set: { column: destinationColumnId },
