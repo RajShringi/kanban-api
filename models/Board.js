@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const boardSchema = new Schema(
   {
-    name: { type: String, required: true, unique: true },
+    name: { type: String, required: true },
     columns: [{ type: Schema.Types.ObjectId, ref: "Column" }],
     user: { type: Schema.Types.ObjectId, ref: "User", required: true },
   },
