@@ -19,7 +19,12 @@ async function main() {
 }
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://kanban-three-beta.vercel.app", // Replace with your frontend origin
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+  })
+);
 
 app.use(logger("dev"));
 app.use(express.json());
