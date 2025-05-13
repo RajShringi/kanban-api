@@ -19,10 +19,22 @@ async function main() {
 }
 
 const app = express();
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://kanban-three-beta.vercel.app",
+];
+
 app.use(
   cors({
-    origin: "https://kanban-three-beta.vercel.app", // Replace with your frontend origin
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 
